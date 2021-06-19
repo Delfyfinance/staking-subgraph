@@ -2,13 +2,13 @@ specVersion: 0.0.2
 description: Staking subgraph
 repository: https://github.com/makerzy/staking-subgraph
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: DelfyStaking
     network: rinkeby
     source:
-      address: '0x5f72674ed9eff7c2e9d82ce5d8258abe36defe6f'
+      address: "0x5f72674ed9eff7c2e9d82ce5d8258abe36defe6f"
       abi: DelfyStakingPool
       startBlock: 8569500
     mapping:
@@ -19,18 +19,18 @@ dataSources:
         - DelfyStakingPool
       abis:
         - name: DelfyStakingPool
-          file: ./abis/Staking.json
+          file: DelfyStaking\abis\Staking.json
         - name: NameSymbol
-          file: ./abis/NameSymbol.json
+          file: DelfyStaking\abis\NameSymbol.json
         - name: ERC20
-          file: ./abis/ERC20.json
+          file: DelfyStaking\abis\ERC20.json
         - name: UserInfo
-          file: ./abis/UserInfo.json
+          file: DelfyStaking\abis\UserInfo.json
         - name: PairTokens
-          file: ./abis/PairTokens.json
+          file: DelfyStaking\abis\PairTokens.json
         - name: Pair
-          file: ./abis/Pair.json
-      eventHandlers: 
+          file: DelfyStaking\abis\Pair.json
+      eventHandlers:
         - event: Initialized(indexed address,uint256,uint256)
           handler: handleInitialized
         - event: AddPool(indexed address,uint256)
@@ -44,9 +44,9 @@ dataSources:
         - event: EmergencyWithdraw(indexed address,indexed address,uint256)
           handler: handleEmergencyWithdraw
         - event: Claimed(indexed address,indexed address,uint256)
-          handler: handleClaimed 
+          handler: handleClaimed
         - event: BlockReward(indexed address,uint256)
-          handler: handleClaimed 
+          handler: handleClaimed
         - event: UpdatePool(indexed address,uint256)
           handler: handleUpdatePool
-      file: ./src/mapping.ts
+      file: DelfyStaking\DelfyStaking.wasm
